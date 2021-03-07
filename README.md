@@ -9,20 +9,21 @@ There were many metrics that we calculated from the data to give insight into th
 - Total Votes Cast
 The total votes cast in the election was calculated by first creating a total vote counter and setting that variable to 0. Next, while looping through the CSV file to convert it into a list of dictionaries, we added each row as a vote. We then printed the variable for total votes and edited it to include a comma at its necessary locations. There were 369,711 votes total. 
 
-    # Initialize a total vote counter.
+    #Initialize a total vote counter.
         total_votes = 0
-    # Add to the total vote count
+    #Add to the total vote count
         total_votes = total_votes + 1 (This was placed inside the loop)
-    # the code responsible for listing the total vote count on the election_analysis document. 
+    #the code responsible for listing the total vote count on the election_analysis document. 
      f"Total Votes: {total_votes:,}\n"
 
 - County Breakdown
 The number of votes and percentage of total votes was calculated for each county. This was first done by creating a county list, to hold the names of the counties, and a county dictionary, which we used to hold the vote counts and match them with their respective county. When looping through the CSV file, we took the name of each county down, and created an if statement saying if the county was already in the list, to skip it. This led us to build our list. We totaled the county votes by adding a vote for every time the name was listed. We then wrote another loop in order to retrieve our info from the dictionary we created, and to then total our count for each county and calculate our percentage of votes per county. This led to our county votes breakdown available in the election_analysis document. 
 
-    # The code below was placed inside the first loop to retrieve the county names.
+    #The code below was placed inside the first loop to retrieve the county names.
     county_name = row[1]
-    # This conditional was written to gather only unique names for our list, and to count those votes for every time the county name was listed.
-    if county_name not in county_options:
+    #This conditional was written to gather only unique names for our list, and to count those votes for every time the county name was listed.
+    
+        if county_name not in county_options:
 
             # 4b: Add the existing county to the list of counties.
             county_options.append(county_name)
@@ -32,7 +33,7 @@ The number of votes and percentage of total votes was calculated for each county
 
         # 5: Add a vote to that county's vote count.
         county_votes[county_name] += 1
-    # This code was the loop that calculated the vote count per county and percentage per county based on our dictionary information, and printed the results. 
+    #This code was the loop that calculated the vote count per county and percentage per county based on our dictionary information, and printed the results. 
         for county_name in county_votes:
             # 6b: Retrieve the county vote count.
             county_vc = county_votes[county_name]
@@ -47,9 +48,10 @@ The number of votes and percentage of total votes was calculated for each county
 - Candidate Breakdown
 The candidate breakdown was calculated almost identically to the county breakdown. We created a candidate list and dictionary, which we used to hold the candidate names and match them with their vote counts. We used the same method of taking unique candidate names and vote counts as we did with the county information. Again, we wrote another loop in order to retrieve our info from the dictionary, and to then total our count and calculate our percentage. This led to our candidate votes breakdown available in the election_analysis document. 
 
-    # Get the candidate name from each row.
+    #Get the candidate name from each row.
         candidate_name = row[2]
-    # This loop was written to gather our unique names and vote count
+    #This loop was written to gather our unique names and vote count
+    
     if candidate_name not in candidate_options:
 
             # Add the candidate name to the candidate list.
